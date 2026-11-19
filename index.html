@@ -120,7 +120,6 @@
                 inset 0 -8px 22px rgba(255,150,190,.28);
   }
 
-  /* the paper inside */
   .env-letter{
     position:absolute; left:7%; right:7%; bottom:7%; height:80%;
     z-index:2;
@@ -144,7 +143,6 @@
   .paper-line:nth-child(3){ width: 64%; }
   .paper-line:nth-child(4){ width: 70%; }
 
-  /* front pocket */
   .env-front{
     position:absolute; inset:0; z-index:3; border-radius: 20px;
     background: linear-gradient(155deg,#FFEDB0,#FFC9DA);
@@ -153,7 +151,6 @@
                 inset 0 0 30px rgba(255,150,190,.18);
   }
 
-  /* top flap */
   .env-flap{
     position:absolute; top:0; left:0; width:100%; height:58%;
     z-index:4;
@@ -171,7 +168,6 @@
     z-index: 1;
   }
 
-  /* wax seal */
   .env-seal{
     position:absolute; top:29%; left:50%; z-index:5;
     transform: translate(-50%,-50%) scale(1);
@@ -229,7 +225,6 @@
     to  { opacity:1; transform: none; }
   }
 
-  /* liquid glass sheen */
   .card::before{
     content:'';
     position:absolute; inset:0;
@@ -258,7 +253,6 @@
     letter-spacing:.5px;
   }
 
-  /* message lines */
   .card .line{ opacity:0; }
   .card.show .line{ animation: lineIn .8s cubic-bezier(.2,.85,.3,1) forwards; }
   @keyframes lineIn{
@@ -326,6 +320,20 @@
   .kiss-btn:hover{ transform: translateY(-4px) scale(1.045); box-shadow: 0 20px 44px rgba(255,110,160,.5), inset 0 2px 0 #fff; }
   .kiss-btn:hover::after{ transform: translateX(130%); }
   .kiss-btn:active{ transform: scale(.96); }
+
+  /* ---------- cute kiss note (appears after button click) ---------- */
+  .kiss-note{
+    opacity:0;
+    transform: translateY(14px);
+    transition: opacity .65s ease, transform .65s cubic-bezier(.2,.85,.3,1);
+    margin-top: 26px;
+    font-weight: 700;
+    font-size: clamp(1rem, 2.4vw, 1.1rem);
+    line-height: 1.65;
+    color: var(--rose);
+    text-shadow: 0 2px 8px rgba(255,150,190,.35);
+  }
+  .kiss-note.show{ opacity:1; transform: none; }
 
   /* ================= POPPING KISSES ================= */
   .pop-kiss{
@@ -413,6 +421,11 @@
     <p class="msg final line">And I'll marry youuuuuuuuuu babyyyyyyy💋💋❤️</p>
 
     <button class="kiss-btn line" id="kissBtn">Get a Kiss from Me 💋</button>
+
+    <!-- cute message that appears after clicking the kiss button -->
+    <p class="kiss-note" id="kissNote">
+      You're getting kissed by Your Husband Ritesh Right now babyyyyyyy 💋❤️
+    </p>
   </main>
 
 <script>
@@ -422,6 +435,7 @@
   const openHint = document.getElementById('openHint');
   const card     = document.getElementById('card');
   const kissBtn  = document.getElementById('kissBtn');
+  const kissNote = document.getElementById('kissNote');
 
   let opened = false;
 
@@ -440,7 +454,7 @@
     if (opened) return;
     opened = true;
 
-    envelope.classList.add('open');   // flap flips + letter slides up
+    envelope.classList.add('open');
     openHint.classList.add('hide');
 
     setTimeout(() => stage.classList.add('gone'), 1250);
@@ -465,7 +479,7 @@
     el.className = 'pop-kiss';
     el.textContent = '💋';
 
-    const size = 26 + Math.random() * 56;         // 26px – 82px
+    const size = 26 + Math.random() * 56;
     el.style.fontSize = size + 'px';
     el.style.left = (4 + Math.random() * 92) + 'vw';
     el.style.top  = (6 + Math.random() * 86) + 'vh';
@@ -477,8 +491,8 @@
   }
 
   function kissBurst(){
-    const waves = 3;       // three big waves
-    const perWave = 30;    // kisses in each wave
+    const waves = 3;
+    const perWave = 30;
 
     for (let w = 0; w < waves; w++){
       for (let i = 0; i < perWave; i++){
@@ -493,6 +507,9 @@
       [{ transform:'scale(.94)' }, { transform:'scale(1.07)' }, { transform:'scale(1)' }],
       { duration: 430, easing:'cubic-bezier(.34,1.56,.64,1)' }
     );
+
+    // reveal the cute message after a tiny delay (when kisses start)
+    setTimeout(() => kissNote.classList.add('show'), 120);
   });
 </script>
 </body>
