@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Happy Princess Day Babyyyyyyy 💋</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rose:        #C2185B;
+    --rose-deep:   #7A2B46;
+    --pink:        #FF8FA3;
+    --pink-soft:   #FFD1DC;
+    --yellow:      #FFF3C4;
+    --yellow-deep: #FFE27A;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+
+  html, body{ min-height:100%; }
+
+  body{
+    font-family:'Quicksand', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg,#FFFBE0 0%, #FFE9F0 35%, #FFF6CC 65%, #FFDCE8 100%);
+    background-size: 300% 300%;
+    animation: bgShift 22s ease-in-out infinite;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 48px 18px;
+    overflow-x:hidden;
+    color: var(--rose-deep);
+  }
+
+  body.locked{ overflow:hidden; }
+
+  @keyframes bgShift{
+    0%,100%{ background-position: 0% 50%; }
+    50%    { background-position: 100% 50%; }
+  }
+
+  /* ---------- soft floating colour blobs ---------- */
+  .blob{ position:fixed; border-radius:50%; pointer-events:none; z-index:0; filter: blur(70px); opacity:.6; }
+  .b1{ width:420px; height:420px; top:-140px; left:-120px;
+       background: radial-gradient(circle, #FFE27A, transparent 70%);
+       animation: float1 17s ease-in-out infinite; }
+  .b2{ width:500px; height:500px; bottom:-180px; right:-160px;
+       background: radial-gradient(circle, #FF9EC4, transparent 70%);
+       animation: float2 21s ease-in-out infinite; }
+  .b3{ width:360px; height:360px; top:45%; left:58%;
+       background: radial-gradient(circle, #FFD1DC, transparent 70%);
+       animation: float3 19s ease-in-out infinite; }
+
+  @keyframes float1{ 50%{ transform: translate(60px, 70px) scale(1.12); } }
+  @keyframes float2{ 50%{ transform: translate(-70px,-60px) scale(1.08); } }
+  @keyframes float3{ 50%{ transform: translate(-50px, 60px) scale(1.15); } }
+
+  /* ================= INTRO : THE BIG KISS ================= */
+  .intro{
+    position:fixed; inset:0; z-index:9999;
+    display:grid; place-items:center;
+    background: radial-gradient(circle at 50% 45%, #FFFBEA 0%, #FFE6EF 45%, #FFCFE0 100%);
+    transition: opacity 1s ease, visibility 1s ease;
+  }
+  .intro.gone{ opacity:0; visibility:hidden; }
+
+  .intro .kiss{
+    font-size: clamp(140px, 42vw, 420px);
+    line-height:1;
+    display:block;
+    filter: drop-shadow(0 24px 60px rgba(255, 70, 130, .55));
+    animation: kissPop 2.2s cubic-bezier(.2,.9,.3,1.15) forwards;
+    user-select:none;
+  }
+  @keyframes kissPop{
+    0%   { transform: scale(0) rotate(-45deg); opacity:0; }
+    30%  { transform: scale(1.28) rotate(10deg); opacity:1; }
+    45%  { transform: scale(.96) rotate(-4deg); }
+    60%  { transform: scale(1.08) rotate(3deg); }
+    80%  { transform: scale(1) rotate(0deg); }
+    100% { transform: scale(1) rotate(0deg); opacity:1; }
+  }
+
+  .ring{
+    position:absolute; width: 240px; height:240px; border-radius:50%;
+    border: 3px solid rgba(255,120,170,.55);
+    animation: ringOut 1.6s ease-out .35s forwards; opacity:0;
+  }
+  .ring.r2{ animation-delay:.6s; border-color: rgba(255,210,120,.7); }
+  @keyframes ringOut{
+    0%   { transform: scale(.2); opacity:.9; }
+    100% { transform: scale(4.2); opacity:0; }
+  }
+
+  /* ================= ENVELOPE STAGE ================= */
+  .stage{
+    position:relative; z-index:2;
+    display:flex; flex-direction:column; align-items:center; gap:30px;
+    transition: opacity .5s ease, transform .5s ease;
+  }
+  .stage.gone{ opacity:0; transform: scale(.86) translateY(24px); }
+
+  .envelope{
+    position:relative;
+    width: min(88vw, 430px);
+    aspect-ratio: 1.55 / 1;
+    cursor:pointer;
+    filter: drop-shadow(0 30px 60px rgba(255,110,160,.38));
+    animation: envFloat 4.4s ease-in-out infinite;
+  }
+  @keyframes envFloat{ 50%{ transform: translateY(-10px) rotate(-1.2deg); } }
+
+  .env-back{
+    position:absolute; inset:0; border-radius: 20px; z-index:1;
+    background: linear-gradient(150deg,#FFF8D8,#FFD9E5);
+    border:1px solid rgba(255,255,255,.95);
+    box-shadow: inset 0 2px 0 rgba(255,255,255,1),
+                inset 0 -8px 22px rgba(255,150,190,.28);
+  }
+
+  /* the paper inside */
+  .env-letter{
+    position:absolute; left:7%; right:7%; bottom:7%; height:80%;
+    z-index:2;
+    border-radius: 14px;
+    background: linear-gradient(165deg,#FFFEFA,#FFF0F7);
+    border:1px solid rgba(255,255,255,.95);
+    box-shadow: 0 12px 26px rgba(255,120,160,.25);
+    display:flex; flex-direction:column; align-items:center;
+    padding: 18px 18px 0;
+    gap: 10px;
+    transform: translateY(0);
+    transition: transform .95s cubic-bezier(.3,1,.4,1) .3s;
+  }
+  .envelope.open .env-letter{ transform: translateY(-44%); }
+
+  .paper-heart{ font-size: 34px; line-height:1; filter: drop-shadow(0 4px 10px rgba(255,120,160,.4)); }
+  .paper-line{
+    height: 7px; border-radius: 99px; width: 78%;
+    background: linear-gradient(90deg, rgba(255,183,206,.85), rgba(255,214,150,.85));
+  }
+  .paper-line:nth-child(3){ width: 64%; }
+  .paper-line:nth-child(4){ width: 70%; }
+
+  /* front pocket */
+  .env-front{
+    position:absolute; inset:0; z-index:3; border-radius: 20px;
+    background: linear-gradient(155deg,#FFEDB0,#FFC9DA);
+    clip-path: polygon(0 0, 50% 48%, 100% 0, 100% 100%, 0 100%);
+    box-shadow: inset 0 -3px 0 rgba(255,255,255,.85),
+                inset 0 0 30px rgba(255,150,190,.18);
+  }
+
+  /* top flap */
+  .env-flap{
+    position:absolute; top:0; left:0; width:100%; height:58%;
+    z-index:4;
+    background: linear-gradient(160deg,#FFDB8E,#FFC2D6);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transform-origin: top center;
+    transform: perspective(900px) rotateX(0deg);
+    transition: transform .78s cubic-bezier(.42,.12,.3,1),
+                z-index 0s linear .38s;
+    border-radius: 20px 20px 0 0;
+    box-shadow: inset 0 2px 0 rgba(255,255,255,.9);
+  }
+  .envelope.open .env-flap{
+    transform: perspective(900px) rotateX(-179deg);
+    z-index: 1;
+  }
+
+  /* wax seal */
+  .env-seal{
+    position:absolute; top:29%; left:50%; z-index:5;
+    transform: translate(-50%,-50%) scale(1);
+    font-size: 34px; line-height:1;
+    filter: drop-shadow(0 5px 12px rgba(255,110,160,.55));
+    transition: opacity .35s ease, transform .35s ease;
+  }
+  .envelope.open .env-seal{ opacity:0; transform: translate(-50%,-50%) scale(.35); }
+
+  .open-hint{
+    font-family: inherit;
+    font-size: 1rem; font-weight: 700; letter-spacing:.3px;
+    color: var(--rose);
+    padding: 14px 34px;
+    border-radius: 999px;
+    cursor: pointer;
+    border: 1.5px solid rgba(255,255,255,.95);
+    background: linear-gradient(145deg, rgba(255,255,255,.88), rgba(255,214,228,.65));
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    box-shadow: 0 14px 34px rgba(255,110,160,.35),
+                inset 0 2px 0 rgba(255,255,255,1);
+    animation: hintPulse 2.4s ease-in-out infinite;
+    transition: opacity .4s ease, transform .4s ease;
+  }
+  .open-hint.hide{ opacity:0; transform: translateY(14px); pointer-events:none; }
+  @keyframes hintPulse{ 50%{ transform: scale(1.05); box-shadow: 0 18px 40px rgba(255,110,160,.5), inset 0 2px 0 #fff; } }
+
+  /* ================= MESSAGE CARD ================= */
+  .card{
+    display:none;
+    position:relative; z-index:2;
+    width:100%; max-width: 720px;
+    padding: 52px 40px 46px;
+    border-radius: 38px;
+    text-align:center;
+
+    background: linear-gradient(150deg, rgba(255,255,255,.62), rgba(255,255,255,.22) 55%, rgba(255,240,246,.42));
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid rgba(255,255,255,.85);
+    box-shadow:
+      0 30px 70px rgba(255,120,160,.28),
+      0 6px 18px rgba(255,180,120,.18),
+      inset 0 1.5px 0 rgba(255,255,255,.95),
+      inset 0 -1px 0 rgba(255,255,255,.45);
+    overflow:hidden;
+  }
+  .card.show{
+    display:block;
+    animation: cardIn .9s cubic-bezier(.2,.85,.3,1) forwards;
+  }
+  @keyframes cardIn{
+    from{ opacity:0; transform: translateY(44px) scale(.9); }
+    to  { opacity:1; transform: none; }
+  }
+
+  /* liquid glass sheen */
+  .card::before{
+    content:'';
+    position:absolute; inset:0;
+    background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,.65) 46%, transparent 60%);
+    transform: translateX(-120%);
+    animation: sheen 7s ease-in-out 2.5s infinite;
+    pointer-events:none;
+  }
+  @keyframes sheen{
+    0%, 70%{ transform: translateX(-120%); }
+    100%   { transform: translateX(120%); }
+  }
+
+  .crown{
+    font-size: 40px; display:block; margin-bottom: 6px;
+    animation: bob 3.2s ease-in-out infinite;
+    filter: drop-shadow(0 8px 14px rgba(255,180,60,.45));
+  }
+  @keyframes bob{ 50%{ transform: translateY(-8px) rotate(4deg); } }
+
+  .subtitle{
+    font-family:'Dancing Script', cursive;
+    font-size: clamp(1.5rem, 4.5vw, 2rem);
+    color: var(--rose);
+    margin-bottom: 18px;
+    letter-spacing:.5px;
+  }
+
+  /* message lines */
+  .card .line{ opacity:0; }
+  .card.show .line{ animation: lineIn .8s cubic-bezier(.2,.85,.3,1) forwards; }
+  @keyframes lineIn{
+    from{ opacity:0; transform: translateY(18px) scale(.98); }
+    to  { opacity:1; transform: none; }
+  }
+
+  .heading{
+    font-size: clamp(1.25rem, 3.6vw, 1.7rem);
+    font-weight: 700;
+    line-height: 1.55;
+    color: var(--rose);
+    margin-bottom: 22px;
+    text-shadow: 0 2px 10px rgba(255,150,190,.35);
+  }
+
+  .msg{
+    font-size: clamp(1rem, 2.5vw, 1.1rem);
+    font-weight: 500;
+    line-height: 1.75;
+    margin-bottom: 12px;
+    color: var(--rose-deep);
+  }
+
+  .msg.final{
+    font-weight: 700;
+    font-size: clamp(1.05rem, 2.9vw, 1.25rem);
+    color: var(--rose);
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed rgba(255,150,190,.55);
+  }
+
+  /* ---------- kiss button ---------- */
+  .kiss-btn{
+    position:relative;
+    margin-top: 34px;
+    padding: 18px 46px;
+    font-family: inherit;
+    font-size: clamp(1rem, 2.6vw, 1.15rem);
+    font-weight: 700;
+    color: var(--rose);
+    letter-spacing:.3px;
+    border-radius: 999px;
+    cursor: pointer;
+    border: 1.5px solid rgba(255,255,255,.95);
+    background: linear-gradient(145deg, rgba(255,255,255,.85), rgba(255,214,228,.62));
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    box-shadow:
+      0 14px 34px rgba(255,110,160,.38),
+      0 3px 10px rgba(255,180,90,.22),
+      inset 0 2px 0 rgba(255,255,255,1),
+      inset 0 -2px 6px rgba(255,150,190,.22);
+    transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s ease;
+    overflow:hidden;
+  }
+  .kiss-btn::after{
+    content:'';
+    position:absolute; inset:0;
+    background: linear-gradient(115deg, transparent 35%, rgba(255,255,255,.9) 50%, transparent 65%);
+    transform: translateX(-130%);
+    transition: transform .7s ease;
+  }
+  .kiss-btn:hover{ transform: translateY(-4px) scale(1.045); box-shadow: 0 20px 44px rgba(255,110,160,.5), inset 0 2px 0 #fff; }
+  .kiss-btn:hover::after{ transform: translateX(130%); }
+  .kiss-btn:active{ transform: scale(.96); }
+
+  /* ================= POPPING KISSES ================= */
+  .pop-kiss{
+    position: fixed;
+    z-index: 10001;
+    pointer-events: none;
+    user-select: none;
+    line-height: 1;
+    transform: translate(-50%,-50%) scale(0);
+    animation: popKiss 1.5s cubic-bezier(.2,.9,.3,1.2) forwards;
+    filter: drop-shadow(0 10px 18px rgba(255,90,150,.5));
+    will-change: transform, opacity;
+  }
+
+  @keyframes popKiss{
+    0%   { transform: translate(-50%,-50%) scale(0) rotate(0deg); opacity:0; }
+    28%  { transform: translate(-50%,-50%) scale(1.35) rotate(var(--r)); opacity:1; }
+    48%  { transform: translate(-50%,-50%) scale(1) rotate(var(--r)); opacity:1; }
+    72%  { transform: translate(-50%,-50%) scale(1.1) rotate(var(--r)); opacity:1; }
+    100% { transform: translate(-50%,-150%) scale(.85) rotate(var(--r)); opacity:0; }
+  }
+
+  @media (max-width: 560px){
+    body{ padding: 28px 12px; }
+    .card{ padding: 38px 22px 34px; border-radius: 30px; }
+    .kiss-btn{ padding: 16px 32px; width: 100%; }
+  }
+</style>
+</head>
+<body class="locked">
+
+  <!-- soft background -->
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+
+  <!-- ============ INTRO : HUGE KISS ============ -->
+  <div class="intro" id="intro">
+    <div class="ring"></div>
+    <div class="ring r2"></div>
+    <span class="kiss">💋</span>
+  </div>
+
+  <!-- ============ ENVELOPE ============ -->
+  <section class="stage" id="stage">
+    <div class="envelope" id="envelope" role="button" aria-label="Open the love letter">
+      <div class="env-back"></div>
+
+      <div class="env-letter" aria-hidden="true">
+        <div class="paper-heart">💌</div>
+        <div class="paper-line"></div>
+        <div class="paper-line"></div>
+        <div class="paper-line"></div>
+      </div>
+
+      <div class="env-front"></div>
+      <div class="env-flap"></div>
+      <div class="env-seal">💋</div>
+    </div>
+
+    <button class="open-hint" id="openHint">Tap to open 💌</button>
+  </section>
+
+  <!-- ============ MESSAGE CARD ============ -->
+  <main class="card" id="card">
+    <span class="crown line">👑</span>
+    <p class="subtitle line">For my one &amp; only princess</p>
+
+    <h1 class="heading line">
+      Happy Princess Dayyyy to the Very Best Woman of My Life 💋❤️❤️
+    </h1>
+
+    <p class="msg line">To the Woman I admire the most💋💋❤️❤️</p>
+    <p class="msg line">I'm obsessed with youuuuuuuuuu darling 💋💋💋</p>
+    <p class="msg line">I loveeeeeee youuuuuuuu sooo muchhhhhhhh baby 💋💋❤️❤️</p>
+    <p class="msg line">I'm always with youuuuuuuuuu baby💋💋❤️</p>
+    <p class="msg line">You make me happy 💋💋❤️</p>
+    <p class="msg line">You're Always with me💋💋❤️</p>
+    <p class="msg line">You're with me in every situation 💋💋❤️</p>
+    <p class="msg line">You understand me babyyyyyyy 💋💋❤️</p>
+    <p class="msg line">Thankkkk youuuuuuuuuu sooo muchhhhh babyyyyyyy 💋💋❤️</p>
+    <p class="msg line">I'm soooooo lucky to have youuuuuuuuuu babyyyyyyy 💋💋❤️</p>
+    <p class="msg line">I loveeeeeee youuuuuuuu sooo muchhhhhhhh baby 💋💋❤️</p>
+
+    <p class="msg final line">And I'll marry youuuuuuuuuu babyyyyyyy💋💋❤️</p>
+
+    <button class="kiss-btn line" id="kissBtn">Get a Kiss from Me 💋</button>
+  </main>
+
+<script>
+  const intro    = document.getElementById('intro');
+  const stage    = document.getElementById('stage');
+  const envelope = document.getElementById('envelope');
+  const openHint = document.getElementById('openHint');
+  const card     = document.getElementById('card');
+  const kissBtn  = document.getElementById('kissBtn');
+
+  let opened = false;
+
+  /* ---------------- INTRO SEQUENCE ---------------- */
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      intro.classList.add('gone');
+      document.body.classList.remove('locked');
+    }, 2300);
+
+    setTimeout(() => intro.remove(), 3300);
+  });
+
+  /* ---------------- OPEN THE ENVELOPE ---------------- */
+  function openEnvelope(){
+    if (opened) return;
+    opened = true;
+
+    envelope.classList.add('open');   // flap flips + letter slides up
+    openHint.classList.add('hide');
+
+    setTimeout(() => stage.classList.add('gone'), 1250);
+
+    setTimeout(() => {
+      stage.style.display = 'none';
+      card.classList.add('show');
+
+      const lines = card.querySelectorAll('.line');
+      lines.forEach((el, i) => {
+        el.style.animationDelay = (0.3 + i * 0.12) + 's';
+      });
+    }, 1700);
+  }
+
+  envelope.addEventListener('click', openEnvelope);
+  openHint.addEventListener('click', openEnvelope);
+
+  /* ---------------- KISS POP BURST ---------------- */
+  function spawnPopKiss(){
+    const el = document.createElement('span');
+    el.className = 'pop-kiss';
+    el.textContent = '💋';
+
+    const size = 26 + Math.random() * 56;         // 26px – 82px
+    el.style.fontSize = size + 'px';
+    el.style.left = (4 + Math.random() * 92) + 'vw';
+    el.style.top  = (6 + Math.random() * 86) + 'vh';
+    el.style.setProperty('--r', (Math.random() * 70 - 35) + 'deg');
+    el.style.animationDelay = (Math.random() * 0.12) + 's';
+
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 1900);
+  }
+
+  function kissBurst(){
+    const waves = 3;       // three big waves
+    const perWave = 30;    // kisses in each wave
+
+    for (let w = 0; w < waves; w++){
+      for (let i = 0; i < perWave; i++){
+        setTimeout(spawnPopKiss, w * 380 + i * 34);
+      }
+    }
+  }
+
+  kissBtn.addEventListener('click', () => {
+    kissBurst();
+    kissBtn.animate(
+      [{ transform:'scale(.94)' }, { transform:'scale(1.07)' }, { transform:'scale(1)' }],
+      { duration: 430, easing:'cubic-bezier(.34,1.56,.64,1)' }
+    );
+  });
+</script>
+</body>
+</html>
